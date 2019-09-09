@@ -38,7 +38,18 @@ for i, l in enumerate(DEMO):
     if '12q' in l:
         demo.append(l)
 
+        
 ### Read all single text file of table and concatenae to one
 table = pd.concat([pd.read_csv(f,sep='$',dtype=object) for f in demo])
+
+### Remove and rename the columns
+table.drop(columns=['auth_num','lit_ref','age_grp'], axis=0, inplace=True)
+table.rename(columns={'gndr_cod' : 'sex'}, inplace=True)
+
+### Remove the index of file and export file to directory
+table.reset_index()
 table.to_csv(p+'demo.txt',index=False)
 print(table)
+
+
+
