@@ -38,7 +38,7 @@ for i, l in enumerate(DEMO):
     if '12q' in l:
         demo.append(l)
 
-### Concatenate the all single file to one
+### Read all single text file of table and concatenae to one
 table = pd.concat([pd.read_csv(f,sep='$',dtype=object) for f in demo])
 table.to_csv(p+'demo.txt',index=False)
 print(table)
